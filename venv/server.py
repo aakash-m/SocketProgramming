@@ -30,10 +30,10 @@ def handleClient(connection, address):
         if msg_length:
             msg_length = int(msg_length)
             msg = connection.recv(msg_length).decode(FORMAT)
-
             if msg == DISCONNECT_MESSAGE:
                 connected = False
             print(f"[{address}] {msg}")
+            connection.send("Msg received".encode(FORMAT))
 
     connection.close()
 
